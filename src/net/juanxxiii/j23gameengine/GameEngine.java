@@ -46,7 +46,7 @@ public class GameEngine extends javax.swing.JFrame {
             this.setTitle(screenTitle);
             this.setBounds(screenX,screenY,screenWidth,screenHeight);
             this.setResizable(false);
-            Freeza freeza = new Freeza(100,100, "assets/Freeza.png", 10, 2);
+            //Freeza freeza = new Freeza(100,100, "assets/Freeza.png", 10, 2);
             //Carga el icono de la aplicación
             url = ClassLoader.getSystemResource("assets/icon.png");
             Toolkit kit = Toolkit.getDefaultToolkit();
