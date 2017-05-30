@@ -26,7 +26,7 @@ public class Spaceship implements Runnable{
     private int speedNave = 3;//Velocidad de la nave
     
     public Spaceship() throws IOException{
-        //Cargamos la imagen
+        //Cargamos la imagen de la nave
         nave = ImageIO.read(JPGameScreen.class.getResourceAsStream("/assets/spaceship.png"));
         //Inicializamos posiciones
         xNave = (GameEngine.screenWidth-nave.getWidth())/2;
