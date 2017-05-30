@@ -10,7 +10,11 @@ package net.juanxxiii.j23gameengine;
  * @author Raquel
  */
 public class Enemigo {
-    private int coord_x;
-    private int coord_y;
+    private int coord_x;//Posicion del  enemigo, coordenada x
+    private int coord_y;//Posicion del enemigo, coordenada y
+    private String icono;//Imagen del enemigo
+    private int vida;//Numero de vida
+    private int velocidad;//Velocidad a la que se mueve
+    private static final int DOLOR = 1;
     
 }
