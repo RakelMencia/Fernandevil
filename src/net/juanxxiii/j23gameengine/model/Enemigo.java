@@ -9,7 +9,7 @@ package net.juanxxiii.j23gameengine.model;
  *
  * @author Raquel
  */
-public class Enemigo {
+public abstract class Enemigo {
     private int coord_x;//Posicion inicial del  enemigo, coordenada x
     private int coord_y;//Posicion inicial del enemigo, coordenada y
     private String icono;//Imagen del enemigo
@@ -67,5 +67,6 @@ public class Enemigo {
         this.velocidad = velocidad;
     }
     
+    public abstract void recibirImpacto();
     
 }
