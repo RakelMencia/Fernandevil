@@ -14,5 +14,10 @@ public class Bicho extends Enemigo {
     public Bicho(int _x, int _y, String _icono, int _vida, int _velocidad) {
         super(_x, _y, _icono, _vida, _velocidad);
     }
+
+    @Override
+    public void recibirImpacto() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
