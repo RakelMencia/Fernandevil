@@ -45,11 +45,11 @@ public abstract class Enemigo {
         this.coord_y = coord_y;
     }
 
-    public String getIcono() {
+    public BufferedImage getIcono() {
         return icono;
     }
 
-    public void setIcono(String icono) {
+    public void setIcono(BufferedImage icono) {
         this.icono = icono;
     }
 
