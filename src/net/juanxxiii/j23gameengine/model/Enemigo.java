@@ -5,6 +5,8 @@
  */
 package net.juanxxiii.j23gameengine.model;
 
+import java.awt.image.BufferedImage;
+
 /**
  *
  * @author Raquel
@@ -12,13 +14,13 @@ package net.juanxxiii.j23gameengine.model;
 public abstract class Enemigo {
     private int coord_x;//Posicion inicial del  enemigo, coordenada x
     private int coord_y;//Posicion inicial del enemigo, coordenada y
-    private String icono;//Imagen del enemigo
+    private BufferedImage icono;//Imagen del enemigo
     private int vida;//Numero de vida
     private int velocidad;//Velocidad a la que se mueve
     private static final int DOLOR = 1;
     
     //Constructor
-    public Enemigo(int _x, int _y, String _icono, int _vida, int _velocidad){
+    public Enemigo(int _x, int _y, BufferedImage _icono, int _vida, int _velocidad){
         this.coord_x = _x;
         this.coord_y = _y;
         this.icono = _icono;
