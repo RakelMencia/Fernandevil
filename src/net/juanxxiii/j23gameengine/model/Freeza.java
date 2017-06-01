@@ -20,6 +20,7 @@ public class Freeza extends Enemigo implements Runnable{
         super(_x, _y, imagen, _vida, _velocidad);
     }
     
+    
    
 
     @Override
@@ -29,16 +30,27 @@ public class Freeza extends Enemigo implements Runnable{
 
     @Override
     public void run() {
+        int estado = 1;//Variable para almacenar el estado del muñeco
         while(true){
-            coord_x++;
-            if (coord_x>GameEngine.screenWidth){
-                coord_x=0;
+            if (estado==1){
+                coord_x = coord_x + 1;
+                try {
+                    sleep(20);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Freeza.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                if (coord_x >= 680) {
+                    coord_y++;
+                    try {
+                        sleep(20);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Freeza.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            } else if (estado==0){
+                coord_x = coord_x - 1;
             }
-            try {
-                sleep(20);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Freeza.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            
         }
     }
     
