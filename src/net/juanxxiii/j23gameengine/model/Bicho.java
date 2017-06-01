@@ -37,7 +37,7 @@ public class Bicho extends Enemigo implements Runnable {
                 }
                 else if (estado == 1) {
                     coord_y++;
-                    if (coord_y > GameEngine.screenHeight - 220) {
+                    if (coord_y > GameEngine.screenHeight - 280) {
                     estado = 1;
                 }
                 }
