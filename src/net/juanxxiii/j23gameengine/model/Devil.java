@@ -41,7 +41,7 @@ public class Devil extends Enemigo implements Runnable {
             coord_x++;
             coord_y++;
             try {
-                sleep(200);
+                sleep(100);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Devil.class.getName()).log(Level.SEVERE, null, ex);
             }
