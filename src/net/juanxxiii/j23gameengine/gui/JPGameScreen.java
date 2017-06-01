@@ -18,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import net.juanxxiii.j23gameengine.model.Bicho;
+import net.juanxxiii.j23gameengine.model.Devil;
 import net.juanxxiii.j23gameengine.model.Freeza;
 import net.juanxxiii.j23gameengine.util.SoundPlayer;
 
@@ -31,6 +32,7 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
     Spaceship nave;
     Freeza freeza;//Malo de Raquel
     Bicho bicho; //Malo de Angel
+    Devil devil; //Malo Elen
 
     /**
      * Creates new form JPGameScreen
@@ -122,6 +124,8 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
         freeza.dibujate(g2d);
         //g2d.drawImage(freeza.getFreeza(), nave.getxFreeza(), nave.getyFreeza(), null);
         bicho.dibujate(g2d);
+        //Pinta malo Elen
+        devil.dibujate(g2d);
     }
 
     /**
@@ -171,6 +175,7 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
         try {
             freeza = new Freeza(10, 10, "Freeza.png", 100, 10);
             bicho = new Bicho(80,10,"roto2.gif", 80,20);
+            devil = new Devil(150,150,"Devil.png",100,20);
         } catch (IOException ex) {
             Logger.getLogger(JPGameScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
