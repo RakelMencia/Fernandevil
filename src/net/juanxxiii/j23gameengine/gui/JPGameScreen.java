@@ -180,6 +180,7 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
             devil = new Devil(150,150,"Devil.png",100,20);
             //Comentario 1
             //COMENTARIO DE FERNANDO
+            //UN COMENTARIO EXTRAORDINARIO
            new Thread(devil).start(); 
         } catch (IOException ex) {
             Logger.getLogger(JPGameScreen.class.getName()).log(Level.SEVERE, null, ex);
