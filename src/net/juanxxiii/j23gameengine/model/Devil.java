@@ -12,7 +12,7 @@ import java.io.IOException;
  *
  * @author dam
  */
-public class Devil extends Enemigo{
+public class Devil extends Enemigo {
 
     public Devil(int _x, int _y, String imagen, int _vida, int _velocidad) throws IOException {
         super(_x, _y, imagen, _vida, _velocidad);
