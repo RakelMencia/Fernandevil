@@ -173,10 +173,10 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
      */
     private void loadResources() {
         try {
-            freeza = new Freeza(10, 10, "Freeza.png", 100, 10);//instanciacion nueva
+            freeza = new Freeza(350, 0, "Freeza.png", 100, 10);//instanciacion nueva
             bicho = new Bicho(80,10,"roto2.gif", 80,20);
            new Thread(bicho).start();
-           //new Thread(freeza).start();
+           new Thread(freeza).start();
             devil = new Devil(150,150,"Devil.png",100,20);
            new Thread(devil).start(); 
         } catch (IOException ex) {
