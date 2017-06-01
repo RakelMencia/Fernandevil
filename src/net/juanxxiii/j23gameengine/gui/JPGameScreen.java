@@ -14,7 +14,10 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import static java.lang.Thread.sleep;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import net.juanxxiii.j23gameengine.model.Bicho;
 import net.juanxxiii.j23gameengine.model.Freeza;
 import net.juanxxiii.j23gameengine.util.SoundPlayer;
 
@@ -27,6 +30,7 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
     BufferedImage bg;//Imagen de fondo
     Spaceship nave;
     Freeza freeza;//Malo de Raquel
+    Bicho bicho; //Malo de Angel
 
     /**
      * Creates new form JPGameScreen
@@ -42,7 +46,7 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
             @Override
             public void keyTyped(KeyEvent e) {
                 //El keyboard no dispara este evento
-                switch (e.getKeyCode()){
+                switch (e.getKeyCode()) {
                     case 38:
                         //Key up
                         break;
@@ -60,7 +64,7 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
 
             @Override
             public void keyPressed(KeyEvent e) {
-                switch (e.getKeyCode()){
+                switch (e.getKeyCode()) {
                     case 38:
                         //Key up
                         nave.moveUp();
@@ -82,7 +86,7 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
 
             @Override
             public void keyReleased(KeyEvent e) {
-                switch (e.getKeyCode()){
+                switch (e.getKeyCode()) {
                     case 38:
                         //Key up
                         nave.stop();
@@ -115,7 +119,9 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
         //Pinta los elementos
         g2d.drawImage(nave.getNave(), nave.getxNave(), nave.getyNave(), null);
         //Pinta el malo freeza
+        freeza.dibujate(g2d);
         //g2d.drawImage(freeza.getFreeza(), nave.getxFreeza(), nave.getyFreeza(), null);
+        bicho.dibujate(g2d);
     }
 
     /**
@@ -144,7 +150,7 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
     @Override
     public void run() {
         //Asigna el foco si es necesario
-        if (requestFocusInWindow()==false) {
+        if (requestFocusInWindow() == false) {
             setFocusable(true);
         }
         //GAME LOOP - REPINTA A 60FPS
@@ -157,20 +163,28 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
             }
         }
     }
-    
+
     /**
      * Carga los recursos del videojuego
      */
-    private void loadResources(){
+    private void loadResources() {
+        try {
+            freeza = new Freeza(10, 10, "Freeza.png", 100, 10);
+            bicho = new Bicho(80,10,"roto2.gif", 80,20);
+        } catch (IOException ex) {
+            Logger.getLogger(JPGameScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         try {
             bg = ImageIO.read(JPGameScreen.class.getResourceAsStream("/assets/bg.jpg"));
             nave = new Spaceship();
             new Thread(nave).start();
         } catch (IOException ex) {
-            ex.printStackTrace();
+            Logger.getLogger(JPGameScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
 
+    }
+///
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

@@ -5,27 +5,31 @@
  */
 package net.juanxxiii.j23gameengine.model;
 
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import net.juanxxiii.j23gameengine.gui.JPGameScreen;
 
 /**
  *
  * @author Raquel
  */
 public abstract class Enemigo {
-    private int coord_x;//Posicion inicial del  enemigo, coordenada x
-    private int coord_y;//Posicion inicial del enemigo, coordenada y
-    private BufferedImage icono;//Imagen del enemigo
-    private int vida;//Numero de vida
-    private int velocidad;//Velocidad a la que se mueve
-    private static final int DOLOR = 1;
+    protected int coord_x;//Posicion inicial del  enemigo, coordenada x
+    protected int coord_y;//Posicion inicial del enemigo, coordenada y
+    protected BufferedImage imagen;//Imagen del enemigo
+    protected int vida;//Numero de vida
+    protected int velocidad;//Velocidad a la que se mueve
+    protected static final int DOLOR = 1;
     
     //Constructor
-    public Enemigo(int _x, int _y, BufferedImage _icono, int _vida, int _velocidad){
+    public Enemigo(int _x, int _y, String imagen, int _vida, int _velocidad) throws IOException{
         this.coord_x = _x;
         this.coord_y = _y;
-        this.icono = _icono;
         this.vida = _vida;
         this.velocidad = _velocidad;
+        this.imagen = ImageIO.read(JPGameScreen.class.getResourceAsStream("/assets/" + imagen));
     }
     //Getter y Setter
 
@@ -46,11 +50,11 @@ public abstract class Enemigo {
     }
 
     public BufferedImage getIcono() {
-        return icono;
+        return imagen;
     }
 
     public void setIcono(BufferedImage icono) {
-        this.icono = icono;
+        this.imagen = icono;
     }
 
     public int getVida() {
@@ -71,4 +75,11 @@ public abstract class Enemigo {
     
     public abstract void recibirImpacto();
     
+    public void dibujate(Graphics2D g2d){
+        g2d.drawImage(imagen, coord_x, coord_y, null);
+       
+    }
+    
 }
+    
+

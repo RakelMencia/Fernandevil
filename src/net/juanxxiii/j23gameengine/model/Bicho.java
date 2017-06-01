@@ -5,13 +5,15 @@
  */
 package net.juanxxiii.j23gameengine.model;
 
+import java.io.IOException;
+
 /**
  *
  * @author dam
  */
 public class Bicho extends Enemigo {
     
-    public Bicho(int _x, int _y, String _icono, int _vida, int _velocidad) {
+    public Bicho(int _x, int _y, String _icono, int _vida, int _velocidad) throws IOException {
         super(_x, _y, _icono, _vida, _velocidad);
     }
 
