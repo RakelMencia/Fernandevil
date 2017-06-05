@@ -5,6 +5,7 @@
  */
 package net.juanxxiii.j23gameengine.model;
 
+import java.awt.Graphics2D;
 import java.io.IOException;
 import static java.lang.Thread.sleep;
 import java.util.logging.Level;
@@ -15,7 +16,7 @@ import net.juanxxiii.j23gameengine.GameEngine;
  *
  * @author dam
  */
-public class Bicho extends Enemigo implements Runnable {
+public class Bicho extends Enemigo implements Runnable, EnemigoI {
 
     public Bicho(int _x, int _y, String _icono, int _vida, int _velocidad) throws IOException {
         super(_x, _y, _icono, _vida, _velocidad);
@@ -34,12 +35,11 @@ public class Bicho extends Enemigo implements Runnable {
                 coord_x++;
                 if (coord_x > GameEngine.screenWidth - 100) {
                     estado = 1;
-                }
-                else if (estado == 1) {
+                } else if (estado == 1) {
                     coord_y++;
                     if (coord_y > GameEngine.screenHeight - 280) {
-                    estado = 1;
-                }
+                        estado = 1;
+                    }
                 }
             }
             try {
@@ -48,6 +48,11 @@ public class Bicho extends Enemigo implements Runnable {
                 Logger.getLogger(Bicho.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+
+    @Override
+    public void dibujate(Graphics2D g2d) {
+        g2d.drawImage(imagen, coord_x, coord_y, null);
     }
 
 }

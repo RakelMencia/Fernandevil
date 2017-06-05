@@ -11,14 +11,18 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import static java.lang.Thread.sleep;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import net.juanxxiii.j23gameengine.model.Bicho;
 import net.juanxxiii.j23gameengine.model.Devil;
+import net.juanxxiii.j23gameengine.model.EnemigoI;
 import net.juanxxiii.j23gameengine.model.Freeza;
 import net.juanxxiii.j23gameengine.model.Pollo;
 import net.juanxxiii.j23gameengine.util.SoundPlayer;
@@ -27,7 +31,7 @@ import net.juanxxiii.j23gameengine.util.SoundPlayer;
  *
  * @author Profesor
  */
-public class JPGameScreen extends javax.swing.JPanel implements Runnable {
+public class JPGameScreen extends javax.swing.JPanel implements Runnable, MouseListener {
 
     BufferedImage bg;//Imagen de fondo
     Spaceship nave;
@@ -35,6 +39,8 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
     Bicho bicho; //Malo de Angel
     Devil devil; //Malo Elen
     Pollo pollo; //Malo Vita
+    Graphics2D g2d;
+    Vector<EnemigoI> enemigos = new Vector();
 
     /**
      * Creates new form JPGameScreen
@@ -114,7 +120,7 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
 
     @Override
     public void paintComponent(Graphics g) {
-        Graphics2D g2d = (Graphics2D) g;
+        g2d = (Graphics2D) g;
         g2d.setPaint(Color.WHITE);
         //Pinta la pantalla de blanco
         g2d.fillRect(0, 0, this.getBounds().width, this.getBounds().height);
@@ -122,14 +128,7 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
         g2d.drawImage(bg, 0, 0, null);
         //Pinta los elementos
         g2d.drawImage(nave.getNave(), nave.getxNave(), nave.getyNave(), null);
-        /*Pinta el malo freeza
-        freeza.dibujate(g2d);
-        //Pinta el malo bicho
-        bicho.dibujate(g2d);
-        //Pinta malo Elen
-        devil.dibujate(g2d);
-        //Pinta pollo
-        pollo.dibujate(g2d);*/
+
     }
 
     /**
@@ -178,13 +177,17 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
     private void loadResources() {
         try {
             freeza = new Freeza(350, 0, "Freeza.png", 100, 10);//instanciacion nueva
-            bicho = new Bicho(80,10,"roto2.gif", 80,20);
-           new Thread(bicho).start();
-           new Thread(freeza).start();
-            devil = new Devil(320,150,"Devil.png",100,20);
-           new Thread(devil).start(); 
-           pollo = new Pollo(100,100,"polloA.gif",80,30);
-           new Thread(pollo).start();
+            enemigos.add(freeza);
+            bicho = new Bicho(80, 10, "roto2.gif", 80, 20);
+            new Thread(bicho).start();
+            enemigos.add(bicho);
+            new Thread(freeza).start();
+            devil = new Devil(320, 150, "Devil.png", 100, 20);
+            enemigos.add(devil);
+            new Thread(devil).start();
+            pollo = new Pollo(100, 100, "polloA.gif", 80, 30);
+            enemigos.add(pollo);
+            new Thread(pollo).start();
         } catch (IOException ex) {
             Logger.getLogger(JPGameScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -199,6 +202,33 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
 
     }
 ///
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        for (EnemigoI enemigo : enemigos) {
+            enemigo.dibujate(g2d);
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
