@@ -183,8 +183,8 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
            new Thread(freeza).start();
             devil = new Devil(320,150,"Devil.png",100,20);
            new Thread(devil).start(); 
-           //pollo = new Pollo(100,100,"polloA.gif",80,30);
-           //new Thread(pollo).start();
+           pollo = new Pollo(100,100,"polloA.gif",80,30);
+           new Thread(pollo).start();
         } catch (IOException ex) {
             Logger.getLogger(JPGameScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
