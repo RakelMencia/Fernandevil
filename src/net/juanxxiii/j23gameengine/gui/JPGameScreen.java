@@ -40,13 +40,14 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable, MouseL
     Devil devil; //Malo Elen
     Pollo pollo; //Malo Vita
     Graphics2D g2d;
-    Vector<EnemigoI> enemigos = new Vector();
+    Vector<EnemigoI> enemigos = new Vector<EnemigoI>();
 
     /**
      * Creates new form JPGameScreen
      */
     public JPGameScreen() {
         initComponents();
+        addMouseListener(this);
         //Cargamos los recursos
         loadResources();
         //Hacemos que el panel sea 'focusable' para aceptar eventos
@@ -120,6 +121,7 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable, MouseL
 
     @Override
     public void paintComponent(Graphics g) {
+        
         g2d = (Graphics2D) g;
         g2d.setPaint(Color.WHITE);
         //Pinta la pantalla de blanco
@@ -128,6 +130,9 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable, MouseL
         g2d.drawImage(bg, 0, 0, null);
         //Pinta los elementos
         g2d.drawImage(nave.getNave(), nave.getxNave(), nave.getyNave(), null);
+                for (EnemigoI enemigo : enemigos) {
+            enemigo.dibujate(g2d);
+        }
 
     }
 
@@ -177,17 +182,21 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable, MouseL
     private void loadResources() {
         try {
             freeza = new Freeza(350, 0, "Freeza.png", 100, 10);//instanciacion nueva
+            new Thread(freeza).start();
             enemigos.add(freeza);
+
             bicho = new Bicho(80, 10, "roto2.gif", 80, 20);
             new Thread(bicho).start();
             enemigos.add(bicho);
-            new Thread(freeza).start();
+
             devil = new Devil(320, 150, "Devil.png", 100, 20);
-            enemigos.add(devil);
             new Thread(devil).start();
+            enemigos.add(devil);
+
             pollo = new Pollo(100, 100, "polloA.gif", 80, 30);
-            enemigos.add(pollo);
             new Thread(pollo).start();
+            enemigos.add(pollo);
+
         } catch (IOException ex) {
             Logger.getLogger(JPGameScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -205,8 +214,25 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable, MouseL
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        for (EnemigoI enemigo : enemigos) {
-            enemigo.dibujate(g2d);
+        try {
+            freeza = new Freeza(350, 0, "Freeza.png", 100, 10);//instanciacion nueva
+            new Thread(freeza).start();
+            enemigos.add(freeza);
+
+            bicho = new Bicho(80, 10, "roto2.gif", 80, 20);
+            new Thread(bicho).start();
+            enemigos.add(bicho);
+
+            devil = new Devil(320, 150, "Devil.png", 100, 20);
+            new Thread(devil).start();
+            enemigos.add(devil);
+
+            pollo = new Pollo(100, 100, "polloA.gif", 80, 30);
+            new Thread(pollo).start();
+            enemigos.add(pollo);
+            System.out.println("HE CLICADO");
+        } catch (IOException ex) {
+            Logger.getLogger(JPGameScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
