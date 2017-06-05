@@ -3,6 +3,7 @@
  */
 package net.juanxxiii.j23gameengine.model;
 
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import static java.lang.Thread.sleep;
@@ -14,7 +15,7 @@ import net.juanxxiii.j23gameengine.GameEngine;
  *
  * @author Raquel
  */
-public class Freeza extends Enemigo implements Runnable{
+public class Freeza extends Enemigo implements Runnable, EnemigoI{
 
     public Freeza(int _x, int _y, String imagen, int _vida, int _velocidad) throws IOException {
         super(_x, _y, imagen, _vida, _velocidad);
@@ -52,6 +53,11 @@ public class Freeza extends Enemigo implements Runnable{
             }
             
         }
+    }
+
+    @Override
+    public void dibujate(Graphics2D g2d) {
+        g2d.drawImage(imagen, coord_x, coord_y, null);
     }
     
     

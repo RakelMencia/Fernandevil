@@ -75,11 +75,6 @@ public abstract class Enemigo {
     
     public abstract void recibirImpacto();
     
-    public void dibujate(Graphics2D g2d){
-        g2d.drawImage(imagen, coord_x, coord_y, null);
-       
-    }
-    
 }
     
 
