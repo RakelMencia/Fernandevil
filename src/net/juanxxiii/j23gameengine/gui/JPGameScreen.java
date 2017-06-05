@@ -177,7 +177,7 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
             bicho = new Bicho(80,10,"roto2.gif", 80,20);
            new Thread(bicho).start();
            new Thread(freeza).start();
-            devil = new Devil(320,150,"Devil.png",100,20);
+            devil = new Devil(320,0,"Devil.png",100,20);
            new Thread(devil).start(); 
         } catch (IOException ex) {
             Logger.getLogger(JPGameScreen.class.getName()).log(Level.SEVERE, null, ex);
