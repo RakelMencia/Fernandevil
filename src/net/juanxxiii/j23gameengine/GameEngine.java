@@ -12,6 +12,7 @@ import java.awt.Toolkit;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 import net.juanxxiii.j23gameengine.gui.*;
+import net.juanxxiii.j23gameengine.model.EnemigoI;
 import net.juanxxiii.j23gameengine.model.Freeza;
 import util.PropertiesManager;
 
@@ -40,6 +41,7 @@ public class GameEngine extends javax.swing.JFrame {
         java.net.URL url;
         try {
             initComponents();
+           
             //Carga la configuración del proyecto
             PropertiesManager pm = new PropertiesManager();
             pm.loadProperties();
